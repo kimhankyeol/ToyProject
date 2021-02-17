@@ -14,7 +14,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { CircularProgress } from '@material-ui/core';
 import Kakao from './Kakao';
 import Google from './Google';
-import login from 'src/lib/common';
+import user from 'src/lib/common';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,6 +55,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Login= ()=>{
   const classes = useStyles();
+  const history = useHistory();
   const [loading,setLoading] = useState(false);
   const [inputs , setInputs] = useState({
     email:''
@@ -117,12 +119,17 @@ const Login= ()=>{
               className={classes.submit}
               onClick = {(e)=>{
                   e.preventDefault()
-                  console.log("asd")
                   setLoading(true);
-                  setTimeout(()=>{
-                    setLoading(false)
-                    login(inputs.email,inputs.password,100)
-                  },5000)
+                  setTimeout(async()=>{
+                    const loginResult = await user.login(inputs.email,inputs.password,100);
+                    if(loginResult==="ok"){
+                      setLoading(false);
+                      history.push('/main');
+                    }else{
+                      alert(loginResult);
+                      setLoading(false);
+                    }
+                  },1000)
               }}
             >
              {loading ? <CircularProgress color="white" size={24}/>:"Login"} 

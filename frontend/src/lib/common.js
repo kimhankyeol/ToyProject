@@ -1,33 +1,43 @@
 import axios from 'axios';
 const user = {
-    login:(email,password,sns_gb)=>{
+    login:async(email,password,sns_gb)=>{
         const params={
             "email":email
             ,"password":password
             ,"snsGb":sns_gb
         }
-        asyncFunc.post('http://localhost:8080/login',params);
+        const res = await asyncFunc.post('http://localhost:8080/login',params);
+      //OK , error
+        return res;
+
     },
-    snsLogin:(email,name,sns_gb)=>{
+    snsLogin:async(email,name,sns_gb)=>{
         const params={
             "email":email
             ,"name":name
             ,"snsGb":sns_gb
         }
-        asyncFunc.post('http://localhost:8080/login',params);
+        const res = await asyncFunc.post('http://localhost:8080/login',params);
+        return res;
     }
 }
 
 const asyncFunc ={
-    get:(url,params)=>{
-        axios.get(url,params).then(res =>{
-            console.log(res)
-        })
+    get:async(url,params)=>{
+        try {
+            const response = await axios.get(url,params);
+            return response.status === 200 ? response.data : "error";
+        } catch (error) {
+            return error;
+        }
     },
-    post:(url,params)=>{
-        axios.post(url,params).then(res =>{
-            console.log(res)
-        })
+    post:async(url,params)=>{
+        try {
+            const response = await axios.post(url,params);
+            return response.status === 200 ? response.data : "error";
+        } catch (error) {
+            return error;
+        }
     }
 }
 
