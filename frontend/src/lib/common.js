@@ -26,6 +26,7 @@ const asyncFunc ={
     get:async(url,params)=>{
         try {
             const response = await axios.get(url,params);
+            console.log(response)
             return response.status === 200 ? response.data : "error";
         } catch (error) {
             return error;
