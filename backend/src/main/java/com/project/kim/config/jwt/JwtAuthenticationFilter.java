@@ -29,6 +29,7 @@ public class JwtAuthenticationFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
         PrintWriter out = resp.getWriter();
+
         String method = req.getMethod();
 
         if(!method.equals("POST")) {
