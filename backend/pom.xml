@@ -53,6 +53,16 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.commons</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.14</version>
+        </dependency>
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>jwt</artifactId>
+            <version>3.12.0</version>
+        </dependency>
     </dependencies>
 
     <repositories>
@@ -66,7 +76,7 @@
         <repository>
             <id>in-project-jenkins</id>
             <name>custom jars-jenkins</name>
-            <url>file://${JENKINS_HOME}/workspace/test/back_end/lib</url>
+            <url>file://${JENKINS_HOME}/jobs/${JOB_NAME}/workspace/lib</url>
         </repository>
     </repositories>
 
