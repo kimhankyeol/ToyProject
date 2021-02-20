@@ -54,13 +54,13 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.commons</groupId>
+            <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>1.14</version>
         </dependency>
         <dependency>
             <groupId>com.auth0</groupId>
-            <artifactId>jwt</artifactId>
+            <artifactId>java-jwt</artifactId>
             <version>3.12.0</version>
         </dependency>
     </dependencies>
