@@ -53,24 +53,34 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.commons</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.14</version>
+        </dependency>
+        <dependency>
+            <groupId>com.java</groupId>
+            <artifactId>java-jwt-3.12.0</artifactId>
+            <version>3.12.0</version>
+        </dependency>
     </dependencies>
 
     <repositories>
-        <!-- 로컬-->
+        <!--로컬-->
 <!--        <repository>-->
-<!--            <id>in-project</id>-->
-<!--            <name>In Project Repo</name>-->
+<!--            <id>inner project</id>-->
+<!--            <name>external jars</name>-->
 <!--            <url>file://${project.basedir}/lib</url>-->
 <!--        </repository>-->
-        <!-- 젠킨스 빌드-->
+        <!--젠킨스-->
         <repository>
-            <id>in-project-jenkins</id>
-            <name>custom jars-jenkins</name>
-            <url>file://${JENKINS_HOME}/workspace/${JOB_NAME}/lib</url>
+            <id>inner-jenkins</id>
+            <name>external-jar-jenkins</name>
+            <url>file://${JENKINS_HOME}/jobs/${JOB_NAME}/workspace/lib</url>
         </repository>
-    </repositories>
 
-    <build>
+    </repositories>
+  <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
