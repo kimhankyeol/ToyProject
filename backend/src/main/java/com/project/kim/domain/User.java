@@ -1,15 +1,13 @@
 package com.project.kim.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -34,5 +32,6 @@ public class User {
     @UpdateTimestamp
     private Timestamp modDt;
     private String modUser;
-    private int snsGb;
+
+    private int snsGb = 100;
 }

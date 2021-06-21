@@ -14,10 +14,15 @@ public class UserService implements IUserService {
     @Override
     public User login(User user) {
         if(user.getSnsGb()==100){
-            userRepository.findByEmailAndPassword(user.getEmail(),user.getPassword());
+            return userRepository.findByEmailAndPassword(user.getEmail(),user.getPassword());
         }else{
-            userRepository.findByEmailAndSnsGb(user.getEmail(),user.getSnsGb());
+            return userRepository.findByEmailAndSnsGb(user.getEmail(),user.getSnsGb());
         }
-        return null;
+    }
+
+    @Override
+    public User signup(User user) {
+        //저장은 그냥 save 하면 되는데 , 제대로 들어갔는지 확인하려면 save and flush
+        return userRepository.saveAndFlush(user);
     }
 }

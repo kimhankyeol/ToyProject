@@ -4,4 +4,5 @@ import com.project.kim.domain.User;
 
 public interface IUserService {
     public User login(User user);
+    public User signup(User user);
 }

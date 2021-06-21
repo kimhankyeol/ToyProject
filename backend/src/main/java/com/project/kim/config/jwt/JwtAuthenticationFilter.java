@@ -43,18 +43,18 @@ public class JwtAuthenticationFilter implements Filter {
                 User userEntity = validationUser(user);
                 if(userEntity == null) {
                     // 디비에 데이터 없을떄
-                    out.print("fail");
+                    out.print(false);
                 }else {
                     System.out.println("인증되었습니다.");
                     String jwtToken =
                             JWT.create()
-                                    .withSubject("kimToken")
+//                                    .withSubject("kimToken")
                                     .withExpiresAt(new Date(System.currentTimeMillis()+1000*60*60))
                                     .withClaim("id", userEntity.getId())
                                     .sign(Algorithm.HMAC512(JwtProps.secret));
 
                     resp.addHeader(JwtProps.header, JwtProps.auth+jwtToken);
-                    out.print("ok");
+                    out.print(true);
                 }
                 out.flush();
             } catch (Exception e) {
@@ -66,7 +66,9 @@ public class JwtAuthenticationFilter implements Filter {
     private User validationUser(User user) throws Exception{
         User userEntity = new User();
         if(user.getSnsGb()==100) {
+            System.out.println(user.getPassword());
             userEntity = userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword());
+            System.out.println(userEntity.getSnsGb());
             return userEntity;
         }
 

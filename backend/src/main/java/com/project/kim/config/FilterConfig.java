@@ -25,21 +25,21 @@ public class FilterConfig {
 
     @Bean
     public FilterRegistrationBean<JwtAuthenticationFilter> jwtAuthenticationFilter(){
-        System.out.println("JwtAuthenticationFilter 필터 등록");
+        System.out.println("JwtAuthenticationFilter 필터 등록1");
         FilterRegistrationBean<JwtAuthenticationFilter> bean =
                 new FilterRegistrationBean<>(new JwtAuthenticationFilter(userRepository));
         bean.addUrlPatterns("/login");
         bean.setOrder(1); // 낮은 번호부터 실행됨.
         return bean;
     }
-
-    @Bean
-    public FilterRegistrationBean<JwtAuthorizationFilter> jwtAuthorizationFilter(){
-        System.out.println("JwtAuthorizationFilter 필터 등록");
-        FilterRegistrationBean<JwtAuthorizationFilter> bean =
-                new FilterRegistrationBean<>(new JwtAuthorizationFilter(userRepository));
-        bean.addUrlPatterns("/post/*");
-        bean.setOrder(2); // 낮은 번호부터 실행됨.
-        return bean;
-    }
+    //추후에 로그인 하고 요청 보낼떄 사용
+//    @Bean
+//    public FilterRegistrationBean<JwtAuthorizationFilter> jwtAuthorizationFilter(){
+//        System.out.println("JwtAuthorizationFilter 필터 등록2");
+//        FilterRegistrationBean<JwtAuthorizationFilter> bean =
+//                new FilterRegistrationBean<>(new JwtAuthorizationFilter(userRepository));
+//        bean.addUrlPatterns("/user/*");
+//        bean.setOrder(2); // 낮은 번호부터 실행됨.
+//        return bean;
+//    }
 }

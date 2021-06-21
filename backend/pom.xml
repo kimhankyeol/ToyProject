@@ -54,6 +54,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.5.2</version>
+        </dependency>
+        <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>1.14</version>
@@ -64,22 +69,20 @@
             <version>3.12.0</version>
         </dependency>
     </dependencies>
-
     <repositories>
         <!-- 로컬-->
-<!--        <repository>-->
-<!--            <id>in-project</id>-->
-<!--            <name>In Project Repo</name>-->
-<!--            <url>file://${project.basedir}/lib</url>-->
-<!--        </repository>-->
-        <!-- 젠킨스 빌드-->
         <repository>
-            <id>in-project-jenkins</id>
-            <name>custom jars-jenkins</name>
-            <url>file://${JENKINS_HOME}/jobs/${JOB_NAME}/workspace/lib</url>
+            <id>in-project</id>
+            <name>In Project Repo</name>
+            <url>file://${project.basedir}/lib</url>
         </repository>
+        <!-- 젠킨스 빌드-->
+<!--        <repository>-->
+<!--            <id>in-project-jenkins</id>-->
+<!--            <name>custom jars-jenkins</name>-->
+<!--            <url>file://${JENKINS_HOME}/jobs/${JOB_NAME}/workspace/lib</url>-->
+<!--        </repository>-->
     </repositories>
-
     <build>
         <plugins>
             <plugin>
